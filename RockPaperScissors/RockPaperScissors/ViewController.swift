@@ -76,7 +76,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         present(alert, animated: true, completion: nil)
     }
-//end game over
+//end gameover
 //start photolibrary
     func PhotoLibrary()
     {
