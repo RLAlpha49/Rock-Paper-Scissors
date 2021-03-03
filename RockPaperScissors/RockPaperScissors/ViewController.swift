@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
 //outlets
+    
 //let statements
     let imagePicker = UIImagePickerController()
     let randomRockImageArray = ["R1","R2"]
@@ -25,6 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let url = URL(string: "https://www.wrpsa.com/the-official-rules-of-rock-paper-scissors/")
     let botChoiceArray = ["Rock", "Paper", "Scissors"]
 //let statements
+    
 //var statements
     var currentImageView = UIImageView
     var image: [UIImage] = []
@@ -40,6 +42,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var result = "Lose"
     var botChoice = ""
 //var statements
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         timerLabel.text = "Time: \(timeLabel)"
@@ -57,6 +60,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         CheckImageTimer()
     }
+    
 // start gameover
     func gameOver()
     {
@@ -77,6 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(alert, animated: true, completion: nil)
     }
 //end gameover
+    
 //start photolibrary
     func PhotoLibrary()
     {
@@ -87,6 +92,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     //end photolibrary
+    
     //start camera
     func Camera()
     {
@@ -97,7 +103,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 //end camera
-//start cameraandphotolibrary
+    
+//start camera and photolibrary
     func CameraAndPhotoLibrary()
     {
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
@@ -121,13 +128,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         present(imagePicker, animated: true, completion: nil)
     }
-//end cameraandphotolibrary
+//end camera and photolibrary
+    
 //start checktimer
     func CheckTimer()
     {
         checkTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(CheckAction),userInfo: nil, repeats: true)
     }
 //end checktimer
+    
 //start checkaction
     @objc func CheckAction()
     {
@@ -172,6 +181,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     result = "Win"
                     gameOver()
                 }
+
                 
                 if botChoice == "Paper"
                 {
@@ -212,6 +222,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 //end checkaction
+    
 //start reset
     func Reset()
     {
@@ -225,6 +236,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         botChoice = botChoiceArray.randomElement()!
     }
 //end reset
+    
 //start starttimer
     func StartTimer()
     {
@@ -232,6 +244,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Action), userInfo: nil, repeats: true)
     }
 //end starttimer
+    
 //start action
     @objc func Action()
     {
@@ -239,12 +252,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         timerLabel.text = "Time: \(timeLabel)"
     }
 //end action
+    
 //start openrulesbutton
     @IBAction func openRulesButton(_ sender: UIButton)
     {
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
 //end openrulesbutton
+    
 //start startbutton
     @IBAction func startButton(_ sender: Any)
     {
@@ -252,6 +267,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         CheckTimer()
     }
 //end startbutton
+    
 //start singletap
     @IBAction func singleTap(_ sender: UITapGestureRecognizer)
     {
@@ -289,6 +305,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 //end singletap
+    
 //start doubletap
     @IBAction func doubledTap(_ sender: UITapGestureRecognizer)
     {
@@ -306,6 +323,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
                 
                 if imageView.tag == 2
+
                 {
                     CameraAndPhotoLibrary()
                     image2ImageSelected = true
@@ -329,15 +347,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         let image = info[.originalImage] as! UIImage
         currentImageView.ContentMode = .scaleAspectFit
-        
-        
     }
+   
 //start checkimagetimer
     func CheckImageTimer()
     {
         imageTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkImageAction), userInfo: nil, repeats: true)
     }
 //end checkimagetimer
+    
 //start checkimageaction
     @objc func checkImageAction()
     {
